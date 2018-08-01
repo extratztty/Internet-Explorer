@@ -68,7 +68,7 @@ let Detail = React.createClass({
         const rea = /^\w+=[\w.]+(\|\|\w+=[\w.]+)*$/;
         const reads = /^\w+=[\w.]+(\|\w+=[\w.]+)+$/;
         if(re.test(this.props.params.query)){
-            $.post("http://172.16.76.244/search",{ip:this.props.params.query}, function(result) {
+            $.post("http://localhost:3010/search",{ip:this.props.params.query}, function(result) {
                 this.setState({
                     List:result
                 });
@@ -77,7 +77,7 @@ let Detail = React.createClass({
         }
         else if(req.test(this.props.params.query)) {
             const strq = this.props.params.query.split(":");
-            $.post("http://172.16.76.244/searchByType",{type:strq[0],value:strq[1]}, function(result) {
+            $.post("http://localhost:3010/searchByType",{type:strq[0],value:strq[1]}, function(result) {
                 this.setState({
                     List:result
                 });
@@ -146,7 +146,7 @@ let Detail = React.createClass({
                     organizationv = value.split("=")[1];
                 }else {organizationv+=""}
             });
-            $.post("http://172.16.76.244/advance",{ip:ipv,host:hostv,servers:serversv,powered_by: powered_byv,body:bodyv,code:codev,protocol:protocolv,scheme:schemev,country:countryv,locality:localityv,province:provincev,organization:organizationv}, function(result) {
+            $.post("http://localhost:3010/advance",{ip:ipv,host:hostv,servers:serversv,powered_by: powered_byv,body:bodyv,code:codev,protocol:protocolv,scheme:schemev,country:countryv,locality:localityv,province:provincev,organization:organizationv}, function(result) {
                 this.setState({
                     List:result
                 });
@@ -154,7 +154,7 @@ let Detail = React.createClass({
             }.bind(this));
         }
         else if(reads.test(this.props.params.query)){
-            $.post("http://172.16.76.244/ads",{rules:this.props.params.query}, function(result) {
+            $.post("http://localhost:3010/ads",{rules:this.props.params.query}, function(result) {
                 this.setState({
                     List:result
                 });
