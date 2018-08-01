@@ -1,0 +1,4 @@
+- 安装node
+- cd
+- npm install
+- node server.js
